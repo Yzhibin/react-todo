@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "./App.css";
+import { TodoItem } from "./TodoItem";
 
 function App() {
   const [input, setInput] = useState("");
   const [items, setItems] = useState([]);
+
+  const enterValue = () => {
+    setItems([...items, input]);
+    setInput("");
+  };
+
   return (
     <div className="App">
       <header className="App-header">React TODO App</header>
@@ -14,17 +21,17 @@ function App() {
           onChange={(e) => {
             setInput(e.target.value);
           }}
-        />
-        <input
-          type="submit"
-          value="OK"
-          onClick={() => {
-            setItems([...items, input]);
-            setInput("");
+          onKeyPress={(e) => {
+            if (e.key === "Enter") enterValue();
           }}
         />
+        <input type="submit" value="OK" onClick={enterValue} />
       </div>
-      <div className="App-todo-items">{items.join(", ")}</div>
+      <div className="App-todo-items">
+        {items.map((item, index) => {
+          return <TodoItem index={index} value={item} />;
+        })}
+      </div>
     </div>
   );
 }
