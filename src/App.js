@@ -11,6 +11,10 @@ function App() {
     setInput("");
   };
 
+  const removeItem = (index) => {
+    setItems(items.filter((v, i) => i !== index));
+  };
+
   return (
     <div className="App">
       <header className="App-header">React TODO App</header>
@@ -29,7 +33,14 @@ function App() {
       </div>
       <div className="App-todo-items">
         {items.map((item, index) => {
-          return <TodoItem key={`item-${index}`} value={item} />;
+          return (
+            <TodoItem
+              key={`item-${index}`}
+              value={item}
+              index={index}
+              remove={removeItem}
+            />
+          );
         })}
       </div>
     </div>
