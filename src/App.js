@@ -10,6 +10,8 @@ function App() {
   const [items, setItems] = useState([]);
 
   const enterValue = () => {
+    if (!input) return; // ignore empty input
+
     setItems([...items, input]);
     setInput("");
   };
