@@ -1,6 +1,9 @@
+import { Input } from "antd";
 import { useState } from "react";
 import "./App.css";
 import { TodoItem } from "./TodoItem";
+
+const { Search } = Input;
 
 function App() {
   const [input, setInput] = useState("");
@@ -19,17 +22,17 @@ function App() {
     <div className="App">
       <header className="App-header">React TODO App</header>
       <div className="App-input" style={{ margin: "16px auto" }}>
-        <input
-          type="text"
-          value={input}
+        <Search
+          placeholder="Enter a TODO item..."
+          size="large"
+          style={{ width: "40%", minWidth: 320, maxWidth: 640 }}
+          allowClear
+          enterButton="OK"
           onChange={(e) => {
             setInput(e.target.value);
           }}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") enterValue();
-          }}
+          onSearch={enterValue}
         />
-        <input type="submit" value="OK" onClick={enterValue} />
       </div>
       <div className="App-todo-items">
         {items.map((item, index) => {

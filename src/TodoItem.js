@@ -1,3 +1,6 @@
+import { getHex } from "pastel-color";
+import { CloseOutlined } from "@ant-design/icons";
+
 export function TodoItem(props) {
   // keyword: Object Destructuring
   const { index, value, remove } = props;
@@ -7,21 +10,30 @@ export function TodoItem(props) {
         width: 320,
         margin: "8px auto",
         padding: 4,
-        backgroundColor: "#282c34",
         color: "#fff",
         textAlign: "center",
         position: "relative",
+        fontSize: "1.2em",
+        fontWeight: "600",
+        backgroundColor: getHex(value),
       }}
     >
       {value}
-      <span
-        style={{ position: "absolute", right: 8, cursor: "pointer" }}
+
+      <CloseOutlined
+        style={{
+          position: "absolute",
+          right: 8,
+          bottom: 8,
+          width: 16,
+          height: 16,
+          fontSize: 12,
+          cursor: "pointer",
+        }}
         onClick={() => {
           remove(index);
         }}
-      >
-        X
-      </span>
+      />
     </div>
   );
 }
