@@ -1,6 +1,6 @@
 export function TodoItem(props) {
   // keyword: Object Destructuring
-  const { index, value } = props;
+  const { value } = props;
   return (
     <div
       style={{
@@ -11,7 +11,6 @@ export function TodoItem(props) {
         color: "#fff",
         textAlign: "center",
       }}
-      key={index}
     >
       {value}
     </div>

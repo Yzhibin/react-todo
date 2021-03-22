@@ -29,7 +29,7 @@ function App() {
       </div>
       <div className="App-todo-items">
         {items.map((item, index) => {
-          return <TodoItem index={index} value={item} />;
+          return <TodoItem key={`item-${index}`} value={item} />;
         })}
       </div>
     </div>
