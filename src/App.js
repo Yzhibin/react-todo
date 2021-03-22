@@ -9,10 +9,11 @@ function App() {
   const [input, setInput] = useState("");
   const [items, setItems] = useState([]);
 
-  const enterValue = () => {
-    if (!input) return; // ignore empty input
+  const enterValue = (value) => {
+    // value is passed in by antd Search
+    if (!value) return; // ignore empty input
 
-    setItems([...items, input]);
+    setItems([...items, value]);
     setInput("");
   };
 
@@ -30,6 +31,7 @@ function App() {
           style={{ width: "40%", minWidth: 320, maxWidth: 640 }}
           allowClear
           enterButton="OK"
+          value={input}
           onChange={(e) => {
             setInput(e.target.value);
           }}
